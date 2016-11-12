@@ -1,0 +1,125 @@
+html,
+body {
+    background: rgba(36,36,36,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(36,36,36,1) 0%, rgba(36,36,36,1) 37%, rgba(26,26,26,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(36,36,36,1)), color-stop(37%, rgba(36,36,36,1)), color-stop(100%, rgba(26,26,26,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(36,36,36,1) 0%, rgba(36,36,36,1) 37%, rgba(26,26,26,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(36,36,36,1) 0%, rgba(36,36,36,1) 37%, rgba(26,26,26,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(36,36,36,1) 0%, rgba(36,36,36,1) 37%, rgba(26,26,26,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(36,36,36,1) 0%, rgba(36,36,36,1) 37%, rgba(26,26,26,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#242424', endColorstr='#1a1a1a', GradientType=1 );
+    height: 100%;
+}
+
+.container {
+    margin-top: 25px;
+    width: 30%;
+}
+
+.mbpm {
+    height: 172px;
+    width: 200px;
+    margin: 0 0;
+
+    background: rgba(46,46,46,1);
+    background: -moz-linear-gradient(top, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 37%, rgba(36,36,36,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(46,46,46,1)), color-stop(37%, rgba(46,46,46,1)), color-stop(100%, rgba(36,36,36,1)));
+    background: -webkit-linear-gradient(top, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 37%, rgba(36,36,36,1) 100%);
+    background: -o-linear-gradient(top, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 37%, rgba(36,36,36,1) 100%);
+    background: -ms-linear-gradient(top, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 37%, rgba(36,36,36,1) 100%);
+    background: linear-gradient(to bottom, rgba(46,46,46,1) 0%, rgba(46,46,46,1) 37%, rgba(36,36,36,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e2e2e', endColorstr='#242424', GradientType=0 );
+
+}
+
+.mbpm input {
+    text-align: center;
+    font-size: 550%;
+    font-weight: bold;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    color: rgb(255, 160, 60);
+    background: rgba(0, 0, 0, 0);
+
+    -webkit-box-shadow: inset 0px 0px 86px -19px rgba(0,0,0,1);
+    -moz-box-shadow: inset 0px 0px 86px -19px rgba(0,0,0,1);
+    box-shadow: inset 0px 0px 86px -19px rgba(0,0,0,1);
+
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mframe {
+    border: 1px solid rgb(100, 100, 100);
+    border-top: 1px solid rgb(180, 180, 180);
+    border-radius: 15px;
+    margin: 4px;
+
+    -webkit-box-shadow: -1px 1px 5px 2px rgba(0,0,0,0.11);
+    -moz-box-shadow: -1px 1px 5px 2px rgba(0,0,0,0.11);
+    box-shadow: -1px 1px 5px 2px rgba(0,0,0,0.11);
+}
+
+.mbpmbutton {
+    width: 50px;
+    height: 50px;
+}
+
+.mbutton {
+    font-size: 130%;
+    font-weight: bold;
+    color: rgb(230, 230, 230);
+
+    background: rgba(148,148,148,1);
+    background: -moz-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(105,105,105,1) 3%, rgba(94,94,94,1) 40%, rgba(71,71,71,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(148,148,148,1)), color-stop(3%, rgba(105,105,105,1)), color-stop(40%, rgba(94,94,94,1)), color-stop(100%, rgba(71,71,71,1)));
+    background: -webkit-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(105,105,105,1) 3%, rgba(94,94,94,1) 40%, rgba(71,71,71,1) 100%);
+    background: -o-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(105,105,105,1) 3%, rgba(94,94,94,1) 40%, rgba(71,71,71,1) 100%);
+    background: -ms-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(105,105,105,1) 3%, rgba(94,94,94,1) 40%, rgba(71,71,71,1) 100%);
+    background: linear-gradient(to bottom, rgba(148,148,148,1) 0%, rgba(105,105,105,1) 3%, rgba(94,94,94,1) 40%, rgba(71,71,71,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#949494', endColorstr='#474747', GradientType=0 );
+}
+
+.mmetronome {
+    padding: 10px;
+    width: 350px;
+
+    background: rgba(64,64,64,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(64,64,64,1) 0%, rgba(64,64,64,1) 37%, rgba(48,48,48,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(64,64,64,1)), color-stop(37%, rgba(64,64,64,1)), color-stop(100%, rgba(48,48,48,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(64,64,64,1) 0%, rgba(64,64,64,1) 37%, rgba(48,48,48,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(64,64,64,1) 0%, rgba(64,64,64,1) 37%, rgba(48,48,48,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(64,64,64,1) 0%, rgba(64,64,64,1) 37%, rgba(48,48,48,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(64,64,64,1) 0%, rgba(64,64,64,1) 37%, rgba(48,48,48,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404040', endColorstr='#303030', GradientType=1 );
+
+    -webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.16);
+    box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.16);
+}
+
+.mstartstop {
+    width: 100%;
+}
+
+.mslider {
+    margin: 0 auto;
+    width: 85%;
+    margin-top: 10px;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.mbpm .tick {
+    font-size: 580%;
+}
+
+.mlogo {
+    font-size: 200%;
+    color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(100, 100, 100, 0.9);
+    margin: 5px;
+}
