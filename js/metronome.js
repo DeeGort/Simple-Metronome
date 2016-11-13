@@ -1,131 +1,73 @@
-(function($) {
-    var bpm = 120;
+'use strict';
 
-    $(function() {
-        show();
+(function () {
+    var audioCtx;
+    var gainNode;
+    (function initAudioApi() {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        gainNode = audioCtx.createGain();
+        gainNode.gain.value = 0.15;
+    })();
 
-        /** Events */
-        $('#minus1').click(function() {
-            bpm -= 1;
-            restart();
-            show();
-        });
-        $('#minus5').click(function() {
-            bpm -= 5;
-            restart();
-            show();
-        });
-        $('#minus10').click(function() {
-            bpm -= 10;
-            restart();
-            show();
-        });
-        $('#plus1').click(function() {
-            bpm += 1;
-            restart();
-            show();
-        });
-        $('#plus5').click(function() {
-            bpm += 5;
-            restart();
-            show();
-        });
-        $('#plus10').click(function() {
-            bpm += 10;
-            restart();
-            show();
-        });
-        $('#startstop').click(function() {
-            if (!ticker)
-            {
-                start();
-                $('#startstop').html('◼');
+    angular
+        .module('Metronome', [])
+        .controller('metronomeController', function Metronome(Beep) {
+            this.state = '►';
+            this.bpm = 120;
+            this.ticker = null;
+            this.changeBpm = function (value) {
+                this.bpm = parseInt(this.bpm) + parseInt(value);
+                this.restart();
             }
-            else {
-                stop();
-                $('#startstop').html('►');
+            this.startstop = function () {
+                if (this.state === '►') {
+                    this.start();
+                    this.state = '◼';
+                } else if (this.state === '◼') {
+                    this.stop();
+                    this.state = '►';
+                }
             }
-        });
-        $('#slider').change(function(data) {
-            bpm = parseInt(data.target.value);
-            restart();
-            show();
-        });
-        $('#lcd').change(function(data) {
-            var prevbpm = bpm;
-            bpm = parseInt(data.target.value);
-            if (bpm)
-            {
-                restart();
-                show();
-            } else {
-                $('#lcd').val(prevbpm);
+            this.simplestart = function () {
+                this.ticker = setInterval(function () {
+                    Beep();
+                }, 60000 / parseInt(this.bpm));
             }
-        });
-
-        /** Controllers */
-        var ticker = null;
-        function simplestart() {
-            ticker = setInterval(function() {
-                beep();
-            }, 60000 / bpm);
-        }
-        function start() {
-            beep();
-            simplestart();
-        }
-
-        function stop() {
-            if (ticker)
-                clearInterval(ticker);
-            ticker = null;
-        }
-        function restart() {
-            if (ticker)
-            {
-                stop();
-                simplestart();
+            this.start = function () {
+                Beep();
+                this.simplestart();
             }
-        }
-        function show() {
-            $('#lcd').val(bpm);
-            $('#slider').val(bpm);
-        }
+            this.stop = function () {
+                if (this.ticker)
+                    clearInterval(this.ticker);
+                this.ticker = null;
+            }
+            this.restart = function () {
+                if (this.ticker) {
+                    this.stop();
+                    this.simplestart();
+                }
+            }
     });
 
-})(jQuery);
+    angular
+        .module('Metronome')
+        .factory('Beep', function() {
+            return function beep() {
+                var oscillator = audioCtx.createOscillator();
 
-/** Audio api */
-var audioCtx;
-var gainNode;
-(function initAudioApi(){
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    gainNode = audioCtx.createGain();
-    gainNode.gain.value = 0.15;
+                oscillator.type = 'triangle';
+                oscillator.frequency.value = 740;
+                gainNode.connect(audioCtx.destination);
+                oscillator.connect(gainNode);
+
+                oscillator.start();
+
+                setTimeout(function () {
+                    oscillator.stop();
+                }, 40);
+
+                return oscillator;
+            }
+        });
 })();
-
-function beep() {
-    var oscillator = audioCtx.createOscillator();
-
-    oscillator.type = 'triangle';
-    oscillator.frequency.value = 740;
-    gainNode.connect(audioCtx.destination);
-    oscillator.connect(gainNode);
-
-    oscillator.start();
-
-    setTimeout(function(){
-        oscillator.stop();
-    }, 40);
-
-    feedBack();
-
-    return oscillator;
-};
-
-function feedBack() {
-    $('#lcd').addClass('tick');
-    setTimeout(function() {
-        $('#lcd').removeClass('tick');
-    }, 10);
-}

@@ -123,3 +123,7 @@ table {
     text-shadow: 1px 1px 0px rgba(100, 100, 100, 0.9);
     margin: 5px;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
