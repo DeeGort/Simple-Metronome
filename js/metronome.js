@@ -11,13 +11,22 @@
 
     angular
         .module('Metronome', [])
-        .controller('metronomeController', function Metronome(Beep) {
+        .controller('metronomeController', function Metronome(Beep, $timeout, $interval) {
             this.state = '►';
             this.bpm = 120;
             this.ticker = null;
+            this.tickClass = '';
             this.changeBpm = function (value) {
-                this.bpm = parseInt(this.bpm) + parseInt(value);
-                this.restart();
+                if (value)
+                    this.bpm = parseInt(this.bpm) + parseInt(value);
+                if (this.ticker && parseInt(this.bpm))
+                    this.restart();
+            }
+            this.tick = function() {
+                this.tickClass = 'tick';
+                $timeout(function() {
+                    this.tickClass = '';
+                }.bind(this), 25);
             }
             this.startstop = function () {
                 if (this.state === '►') {
@@ -29,17 +38,20 @@
                 }
             }
             this.simplestart = function () {
-                this.ticker = setInterval(function () {
+                this.ticker = $interval(function () {
                     Beep();
-                }, 60000 / parseInt(this.bpm));
+                    this.tick();
+                }.bind(this),
+                60000 / parseInt(this.bpm));
             }
             this.start = function () {
                 Beep();
+                this.tick();
                 this.simplestart();
             }
             this.stop = function () {
                 if (this.ticker)
-                    clearInterval(this.ticker);
+                    $interval.cancel(this.ticker);
                 this.ticker = null;
             }
             this.restart = function () {

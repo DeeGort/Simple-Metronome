@@ -30,7 +30,9 @@
                             <input type="text"
                             class="form-control"
                             value="120"
-                            ng-model="metronomeCtrl.bpm">
+                            ng-class="metronomeCtrl.tickClass"
+                            ng-model="metronomeCtrl.bpm"
+                            ng-change="metronomeCtrl.changeBpm()">
                         </div>
                     </td>
                     <td><button type="button"
