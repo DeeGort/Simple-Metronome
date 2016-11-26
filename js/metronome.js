@@ -6,7 +6,7 @@
     (function initAudioApi() {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         gainNode = audioCtx.createGain();
-        gainNode.gain.value = 0.15;
+        gainNode.gain.value = 0.08;
     })();
 
     angular
